@@ -26,6 +26,9 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     - name: Run Tests
+      env:
+        SECRET_KEY: "Super_Secret_Key_12345678900987654321"
+        DEBUG: "True"
       run: |
         cd core
         pytest
