@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %} Instant Connect Lab {% endblock %}
+
+{% block content %}
+<!-- This is where the nav was-->
+
+<main role="main">
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+        <div class="container">
+            <h1 class="display-3">Add Device</h1>
+            <p>Enter a Friendly name for the Device and the SIP URI of the device. (The URI must match the URI of the device in Control Hub that has the "Cisco Meeting Broker Call Enabler Bot" added for API access)</p>
+            <form action="{% url 'add_device' %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{form.as_p}}
+                <input class="btn btn-primary" type="submit" value="Add Device &raquo;">
+            </form>
+        </div>
+    </div>
+
+</main>
+
+<footer class="container">
+    <p>&copy; Ironbow Labs</p>
+</footer>
+{% endblock %}

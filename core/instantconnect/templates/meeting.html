@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %} Instant Connect Lab {% endblock %}
+
+{% block content %}
+<!-- This is where the nav was-->
+
+<main role="main">
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+        <div class="container">
+            <h1 class="display-3">Your Meeting Details</h1>
+            <h6>Hosts</h6>
+            {% for host in meeting.hosts%}
+            <div class="row">
+            <div class="col">
+            <p>{{host}}</p>
+            </div>
+            <div class="col">
+            <p><a class="btn btn-primary btn-lg" href="{{host}}" role="button">Connect to Host &raquo;</a></p>
+            </div>
+        </div>
+            {% endfor %}
+            <h6>Guests</h6>
+            {% for guest in meeting.guests%}
+            <p>{{guest}}</p>
+            {% endfor %}
+        </div>
+    </div>
+</main>
+<footer class="container">
+    <p>&copy; Ironbow Labs</p>
+</footer>
+{% endblock %}

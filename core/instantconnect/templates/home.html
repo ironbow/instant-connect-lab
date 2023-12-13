@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %} Instant Connect Lab {% endblock %}
+
+{% block content %}
+<!-- This is where the nav was-->
+<main role="main">
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+        <div class="container">
+            <h1 class="display-3">Instant Connect Devices</h1>
+            <p>Enter a Subject for a Device to start an Instant Connect Meeting</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Example row of columns -->
+        <div class="row">
+            {%for device in devices%}
+            <div class="col-md-4">
+                <h2>{{device.name}}</h2>
+                <form action="{% url 'meeting' %}" method="POST">
+                    {% csrf_token %}
+                    {{form.as_p}}
+                    <input type="hidden" name="sip_uri" value="{{ device.sip_uri }}" />
+                    <input type="hidden" name="bot_token" value="{{ device.control_hub.bot_token }}" />
+                    <input class="btn btn-primary" type="submit" value="Generate meeting urls &raquo;">
+                </form>
+            </div>
+            {%endfor%}
+        </div>
+
+        <hr>
+
+    </div> <!-- /container -->
+
+</main>
+
+<footer class="container">
+    <p>&copy; Ironbow Labs</p>
+</footer>
+{% endblock %}

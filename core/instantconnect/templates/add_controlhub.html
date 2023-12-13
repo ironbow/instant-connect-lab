@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %} Instant Connect Lab {% endblock %}
+
+{% block content %}
+<!-- This is where the nav was-->
+
+<main role="main">
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+        <div class="container">
+            <h1 class="display-3">Add ControlHub</h1>
+            <p>Enter a Friendly name for the Control Hub and the BOT Token for the Site.</p>
+            <form action="{% url 'add_controlhub' %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{form.as_p}}
+                <input class="btn btn-primary" type="submit" value="Add ControlHub &raquo;">
+            </form>
+        </div>
+    </div>
+
+</main>
+
+<footer class="container">
+    <p>&copy; Ironbow Labs</p>
+</footer>
+{% endblock %}
